@@ -1,0 +1,12 @@
+{
+  "name": "MoneyCounterZBack",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.0.7"
+  },
+  "scripts": {
+    "start": "node ./server/server"
+  }
+}

@@ -5,6 +5,8 @@ const dbRequester = require('../helpers/dbRequest')("simulationsDb");
 
 
 router.post('/:userId', function(request, response){
+  console.log('got new data');
+
   const errorhandler = error => {
     response.send(err);
     console.debug(err);
@@ -29,6 +31,7 @@ router.post('/:userId', function(request, response){
 });
 
 router.get('/:userId', function(request, response){
+  console.log('provideing new data');
   const errorhandler = error => {
     response.send(err);
     console.debug(err);

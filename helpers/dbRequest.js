@@ -7,6 +7,7 @@ function getMongoDbRequester(dbName) {
   
   return (
     (collectionName, asyncRequestFunction, errorHandler) => {
+      console.log('truing to write data to collection');
       mongoClient.connect(function(err, client){
         
         if(err){

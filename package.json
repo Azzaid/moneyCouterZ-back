@@ -7,6 +7,6 @@
     "mongodb": "^3.0.7"
   },
   "scripts": {
-    "start": "node ./server/server"
+    "start": "node ./server"
   }
 }

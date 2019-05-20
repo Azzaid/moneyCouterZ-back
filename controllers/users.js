@@ -1,8 +1,8 @@
 const mongodb = require("mongodb");
 const express = require('express');
+const mongoDbConfig = require('../config/mongoDbConfig.js');
 
-const uri = "mongodb+srv://Azzaid:cdOWFJqrHLI9VNVM@azzaidmdb-r422z.mongodb.net/test";
-const mongoClient = new mongodb.MongoClient(uri);
+const mongoClient = new mongodb.MongoClient(mongoDbConfig.uri);
 
 const router = express.Router();
 
@@ -35,3 +35,4 @@ router.get('/new', function(request, response){
   });
 });
 
+module.exports = router;

@@ -3,33 +3,32 @@ const mongoDbConfig = require('../config/mongoDbConfig.js');
 
 
 function getMongoDbRequester(dbName) {
-  const mongoClient = new mongodb.MongoClient(mongoDbConfig.uri);
-  
   return (
     (collectionName, asyncRequestFunction, errorHandler) => {
-      console.log('truing to write data to collection');
+      console.log('accesing the collection');
+      
+      const mongoClient = new mongodb.MongoClient(mongoDbConfig.uri, mongoDbConfig.options);
       mongoClient.connect(function(err, client){
         
         if(err){
           errorHandler(err);
-          return console.log(err);
+          return console.log('got error', err);
         }
         
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
         
-        console.log('some promise', asyncRequestFunction(collection));
-        
         asyncRequestFunction(collection)
           .then(() => {
+            console.log('asynch request succed');
             client.close();
           })
           .catch(err => {
             errorHandler(err);
             client.close();
           });
-      }
-      ,{useNewUrlParser: true});
+      },
+        {useNewUrlParser: true});
     }
     );
 }
